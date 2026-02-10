@@ -1,8 +1,8 @@
 {
     "$schema": "../../../schema/plugin.schema.json",
-    "name": "tee-developer",
+    "name": "tee-experts",
     "version": "1.0.0",
-    "description": "Develop and manage Trusted Execution Environment (TEE) applications with enhanced security and privacy features.",
+    "description": "Develop, test, and secure Trusted Execution Environment (TEE) applications with expert agents for TDX attestation, DCAP verification, and aTLS.",
     "author": {
         "name": "Concrete Security Team",
         "email": "contact@concrete-security.com"
@@ -10,6 +10,11 @@
     "license": "",
     "repository": "https://github.com/concrete-security/concrete-marketplace",
     "keywords": [
-        "TEE"
+        "TEE",
+        "TDX",
+        "attestation",
+        "DCAP",
+        "security",
+        "aTLS"
     ]
 }
