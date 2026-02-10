@@ -26,6 +26,27 @@
                 "TEE"
             ],
             "category": "development"
+        },
+        {
+            "name": "tee-security-auditor",
+            "source": "./claude-plugins/tee-security-auditor",
+            "description": "Expert TEE security auditor for Intel TDX attestation, DCAP verification, EKM channel binding, and aTLS implementations.",
+            "version": "1.0.0",
+            "author": {
+                "name": "Concrete Security Team",
+                "email": "contact@concrete-security.com"
+            },
+            "license": "",
+            "repository": "https://github.com/concrete-security/concrete-marketplace",
+            "keywords": [
+                "TEE",
+                "TDX",
+                "attestation",
+                "DCAP",
+                "security",
+                "aTLS"
+            ],
+            "category": "security"
         }
     ]
 }
