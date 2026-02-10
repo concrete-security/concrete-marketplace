@@ -1,0 +1,175 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://github.com/concrete-security/concrete-marketplace/schema/plugin.schema.json",
+    "title": "Claude Plugin",
+    "description": "Schema for Claude Code plugin definitions",
+    "type": "object",
+    "required": [
+        "name"
+    ],
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "Unique plugin identifier (lowercase, hyphens allowed)",
+            "pattern": "^[a-z][a-z0-9-]*$",
+            "minLength": 2,
+            "maxLength": 64
+        },
+        "version": {
+            "type": "string",
+            "description": "Semantic version (e.g., 1.0.0)",
+            "pattern": "^\\d+\\.\\d+\\.\\d+(-[a-zA-Z0-9.]+)?$"
+        },
+        "description": {
+            "type": "string",
+            "description": "Brief description of the plugin",
+            "minLength": 10,
+            "maxLength": 256
+        },
+        "author": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Author or team name"
+                },
+                "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "Contact email"
+                },
+                "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Author website or profile"
+                }
+            }
+        },
+        "license": {
+            "type": "string",
+            "description": "SPDX license identifier",
+            "default": "MIT"
+        },
+        "repository": {
+            "type": "string",
+            "format": "uri",
+            "description": "Source repository URL"
+        },
+        "homepage": {
+            "type": "string",
+            "format": "uri",
+            "description": "Plugin documentation or homepage"
+        },
+        "keywords": {
+            "type": "array",
+            "description": "Tags for discoverability",
+            "items": {
+                "type": "string"
+            },
+            "maxItems": 10
+        },
+        "commands": {
+            "description": "Additional command files or directories",
+            "oneOf": [
+                {
+                    "type": "string",
+                    "description": "Path to command file or directory"
+                },
+                {
+                    "type": "array",
+                    "description": "Array of paths to command files",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            ]
+        },
+        "agents": {
+            "description": "Additional agent files or directories",
+            "oneOf": [
+                {
+                    "type": "string",
+                    "description": "Path to agents directory"
+                },
+                {
+                    "type": "array",
+                    "description": "Array of paths to agent files",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            ]
+        },
+        "skills": {
+            "description": "Additional skills directories",
+            "oneOf": [
+                {
+                    "type": "string",
+                    "description": "Path to skills directory"
+                },
+                {
+                    "type": "array",
+                    "description": "Array of paths to skill directories",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            ]
+        },
+        "hooks": {
+            "description": "Hook configuration file path or inline configuration",
+            "oneOf": [
+                {
+                    "type": "string",
+                    "description": "Path to hooks.json file"
+                },
+                {
+                    "type": "object",
+                    "description": "Inline hooks configuration"
+                }
+            ]
+        },
+        "mcpServers": {
+            "description": "MCP server configuration file path or inline configuration",
+            "oneOf": [
+                {
+                    "type": "string",
+                    "description": "Path to MCP configuration file"
+                },
+                {
+                    "type": "object",
+                    "description": "Inline MCP configuration"
+                }
+            ]
+        },
+        "lspServers": {
+            "description": "Language Server Protocol configuration",
+            "oneOf": [
+                {
+                    "type": "string",
+                    "description": "Path to LSP configuration file"
+                },
+                {
+                    "type": "object",
+                    "description": "Inline LSP configuration"
+                }
+            ]
+        },
+        "outputStyles": {
+            "description": "Additional output style files or directories",
+            "oneOf": [
+                {
+                    "type": "string",
+                    "description": "Path to output styles directory"
+                },
+                {
+                    "type": "array",
+                    "description": "Array of paths to output style files",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            ]
+        }
+    }
+}

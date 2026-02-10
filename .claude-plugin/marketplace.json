@@ -1,0 +1,31 @@
+{
+    "$schema": "../schema/marketplace.schema.json",
+    "name": "concrete-marketplace",
+    "owner": {
+        "name": "Concrete Security Team",
+        "email": "contact@concrete-security.com"
+    },
+    "metadata": {
+        "description": "Enterprise plugin directory for Concrete Security Claude Code skills, agents, and integrations",
+        "version": "1.0.0",
+        "pluginRoot": "./claude-plugins"
+    },
+    "plugins": [
+        {
+            "name": "tee-developer",
+            "source": "./claude-plugins/tee-developer",
+            "description": "Plugin for developing and testing Trusted Execution Environment (TEE) applications.",
+            "version": "1.0.0",
+            "author": {
+                "name": "Concrete Security Team",
+                "email": "contact@concrete-security.com"
+            },
+            "license": "",
+            "repository": "https://github.com/concrete-security/concrete-marketplace",
+            "keywords": [
+                "TEE"
+            ],
+            "category": "development"
+        }
+    ]
+}

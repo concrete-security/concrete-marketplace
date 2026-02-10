@@ -1,0 +1,220 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "https://github.com/concrete-security/concrete-marketplace/schema/marketplace.schema.json",
+    "title": "Claude Marketplace",
+    "description": "Schema for Claude Code marketplace definitions",
+    "type": "object",
+    "required": [
+        "name",
+        "owner",
+        "plugins"
+    ],
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "Marketplace identifier (lowercase, hyphens allowed)",
+            "pattern": "^[a-z][a-z0-9-]*$",
+            "minLength": 2,
+            "maxLength": 64
+        },
+        "owner": {
+            "type": "object",
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "description": "Marketplace maintainer or team name"
+                },
+                "email": {
+                    "type": "string",
+                    "format": "email",
+                    "description": "Contact email"
+                },
+                "url": {
+                    "type": "string",
+                    "format": "uri",
+                    "description": "Owner website or profile"
+                }
+            }
+        },
+        "metadata": {
+            "type": "object",
+            "description": "Optional marketplace metadata",
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Brief marketplace description",
+                    "minLength": 10,
+                    "maxLength": 256
+                },
+                "version": {
+                    "type": "string",
+                    "description": "Marketplace version (semantic versioning)",
+                    "pattern": "^\\d+\\.\\d+\\.\\d+(-[a-zA-Z0-9.]+)?$"
+                },
+                "pluginRoot": {
+                    "type": "string",
+                    "description": "Base directory for relative plugin paths (e.g., './plugins')",
+                    "default": "."
+                }
+            }
+        },
+        "plugins": {
+            "type": "array",
+            "description": "List of available plugins in this marketplace",
+            "items": {
+                "type": "object",
+                "required": [
+                    "name",
+                    "source"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "Plugin identifier (lowercase, hyphens allowed)",
+                        "pattern": "^[a-z][a-z0-9-]*$"
+                    },
+                    "source": {
+                        "oneOf": [
+                            {
+                                "type": "string",
+                                "description": "Relative path to plugin directory"
+                            },
+                            {
+                                "type": "object",
+                                "description": "Remote source configuration",
+                                "required": [
+                                    "source"
+                                ],
+                                "properties": {
+                                    "source": {
+                                        "type": "string",
+                                        "enum": [
+                                            "github",
+                                            "url"
+                                        ]
+                                    },
+                                    "repo": {
+                                        "type": "string",
+                                        "description": "GitHub repo in format 'owner/repo' (for github source)"
+                                    },
+                                    "url": {
+                                        "type": "string",
+                                        "format": "uri",
+                                        "description": "Git repository URL (for url source)"
+                                    }
+                                }
+                            }
+                        ]
+                    },
+                    "description": {
+                        "type": "string",
+                        "description": "Brief plugin description"
+                    },
+                    "version": {
+                        "type": "string",
+                        "description": "Plugin version",
+                        "pattern": "^\\d+\\.\\d+\\.\\d+(-[a-zA-Z0-9.]+)?$"
+                    },
+                    "author": {
+                        "type": "object",
+                        "properties": {
+                            "name": {
+                                "type": "string"
+                            },
+                            "email": {
+                                "type": "string",
+                                "format": "email"
+                            }
+                        }
+                    },
+                    "license": {
+                        "type": "string",
+                        "description": "SPDX license identifier"
+                    },
+                    "repository": {
+                        "type": "string",
+                        "format": "uri",
+                        "description": "Plugin source repository URL"
+                    },
+                    "homepage": {
+                        "type": "string",
+                        "format": "uri",
+                        "description": "Plugin documentation or homepage"
+                    },
+                    "keywords": {
+                        "type": "array",
+                        "description": "Tags for discoverability",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "category": {
+                        "type": "string",
+                        "description": "Plugin category",
+                        "enum": [
+                            "productivity",
+                            "development",
+                            "testing",
+                            "security",
+                            "data",
+                            "ai-ml",
+                            "devops",
+                            "documentation",
+                            "integration",
+                            "utilities",
+                            "project-management",
+                            "planning"
+                        ]
+                    },
+                    "strict": {
+                        "type": "boolean",
+                        "description": "Whether plugin requires its own plugin.json",
+                        "default": true
+                    },
+                    "commands": {
+                        "description": "Custom paths to command files or directories",
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "agents": {
+                        "description": "Custom paths to agent files",
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            }
+                        ]
+                    },
+                    "hooks": {
+                        "description": "Hooks configuration or path to hooks file",
+                        "oneOf": [
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "object"
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}

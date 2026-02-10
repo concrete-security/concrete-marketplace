@@ -1,0 +1,15 @@
+{
+    "$schema": "../../../schema/plugin.schema.json",
+    "name": "tee-developer",
+    "version": "1.0.0",
+    "description": "Develop and manage Trusted Execution Environment (TEE) applications with enhanced security and privacy features.",
+    "author": {
+        "name": "Concrete Security Team",
+        "email": "contact@concrete-security.com"
+    },
+    "license": "",
+    "repository": "https://github.com/concrete-security/concrete-marketplace",
+    "keywords": [
+        "TEE"
+    ]
+}
