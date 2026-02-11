@@ -7,7 +7,7 @@
     },
     "metadata": {
         "description": "Enterprise plugin directory for Concrete Security Claude Code skills, agents, and integrations",
-        "version": "1.0.0",
+        "version": "0.1.0",
         "pluginRoot": "./claude-plugins"
     },
     "plugins": [
@@ -15,7 +15,7 @@
             "name": "tee-experts",
             "source": "./claude-plugins/tee-experts",
             "description": "Develop, test, and secure Trusted Execution Environment (TEE) applications with expert agents for TDX attestation, DCAP verification, and aTLS.",
-            "version": "1.0.0",
+            "version": "0.1.0",
             "author": {
                 "name": "Concrete Security Team",
                 "email": "contact@concrete-security.com"
