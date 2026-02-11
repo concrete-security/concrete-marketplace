@@ -1,5 +1,4 @@
 {
-    "$schema": "../../../schema/plugin.schema.json",
     "name": "tee-experts",
     "version": "0.1.0",
     "description": "Develop, test, and secure Trusted Execution Environment (TEE) applications with expert agents for TDX attestation, DCAP verification, and aTLS.",
